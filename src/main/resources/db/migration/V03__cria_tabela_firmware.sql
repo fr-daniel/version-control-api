@@ -1,0 +1,15 @@
+CREATE TABLE firmware (
+	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	path_name VARCHAR(50) NOT NULL,
+	extension VARCHAR(10) NOT NULL,
+	content_type VARCHAR(50) NOT NULL,
+	major INTEGER NOT NULL,
+	minor INTEGER NOT NULL,
+	patch INTEGER NOT NULL,
+	tipo_versao VARCHAR(50) NOT NULL,
+	created_on DATE NOT NULL,
+	id_projeto BIGINT(20) NOT NULL,
+	id_placa BIGINT(20) NOT NULL,
+	FOREIGN KEY (id_projeto) REFERENCES projeto(id),
+	FOREIGN KEY (id_placa) REFERENCES placa(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
