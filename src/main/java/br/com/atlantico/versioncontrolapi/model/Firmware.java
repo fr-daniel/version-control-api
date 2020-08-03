@@ -148,6 +148,11 @@ public class Firmware {
         this.contentType = contentType;
     }
 
+    public String getPathNameWithextension() {
+        return this.pathName + "." + extension;
+    }
+
+
     public void initVersion() {
         this.major = 0;
         this.minor = 0;

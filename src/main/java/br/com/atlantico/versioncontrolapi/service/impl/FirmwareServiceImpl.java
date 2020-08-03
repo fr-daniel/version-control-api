@@ -79,7 +79,7 @@ public class FirmwareServiceImpl implements FirmwareService {
         InputStream targetStream = new ByteArrayInputStream(file.getBytes());
 
         try {
-            minioClient.putObject(bucket, String.valueOf(firmware.getId()) + ".zip", targetStream, file.getSize(), null, null, contentType);
+            minioClient.putObject(bucket, firmware.getPathNameWithextension(), targetStream, file.getSize(), null, null, contentType);
         } catch (Exception e) {
             throw new VersionControlException(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -127,14 +127,14 @@ public class FirmwareServiceImpl implements FirmwareService {
     public InputStream buscarFirmwareDownload(Long id) throws VersionControlException, IOException {
 
         Firmware firmware = firmwareRepository.getOne(id);
-        String idArquivo = Long.toString(firmware.getId()) + ".zip";
+        String idArquivo = firmware.getPathNameWithextension();
         InputStream is = downloadArquivo(idArquivo);
 
-        byte[] bytes = IOUtils.toByteArray(is);
+//        byte[] bytes = IOUtils.toByteArray(is);
 //
 //        byte[] bytesa = cryptoUtils.decrypt("Mary has one cat", bytes);
-        InputStream targetStream = new ByteArrayInputStream(bytes);
-        return targetStream;
+//        InputStream targetStream = new ByteArrayInputStream(bytes);
+        return is;
     }
 
 

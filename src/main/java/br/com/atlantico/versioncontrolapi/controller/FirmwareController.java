@@ -70,9 +70,9 @@ public class FirmwareController {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.valueOf(firmware.getContentType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + firmware.getPathName())
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + firmware.getPathNameWithextension())
                 .header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "nomeFirmware")
-                .header("nomeFirmware", firmware.getPathName())
+                .header("nomeFirmware", firmware.getPathNameWithextension())
                 .body(new InputStreamResource(objectStream));
     }
 
