@@ -75,7 +75,6 @@ public class FirmwareServiceImpl implements FirmwareService {
     }
 
     private void uploadFirmware(MultipartFile file, String contentType, Firmware firmware) throws VersionControlException, IOException {
-//        byte[] bytesa = cryptoUtils.encrypt("Mary has one cat", file.getBytes());
         InputStream targetStream = new ByteArrayInputStream(file.getBytes());
 
         try {
@@ -130,10 +129,6 @@ public class FirmwareServiceImpl implements FirmwareService {
         String idArquivo = firmware.getPathNameWithextension();
         InputStream is = downloadArquivo(idArquivo);
 
-//        byte[] bytes = IOUtils.toByteArray(is);
-//
-//        byte[] bytesa = cryptoUtils.decrypt("Mary has one cat", bytes);
-//        InputStream targetStream = new ByteArrayInputStream(bytes);
         return is;
     }
 
